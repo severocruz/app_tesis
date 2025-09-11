@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// ✅ Tema claro
+// Tema claro
 final ThemeData _lightTheme = ThemeData(
   fontFamily: 'SofiaRegular',
   colorScheme: ColorScheme.light(
@@ -68,7 +68,7 @@ final ThemeData _lightTheme = ThemeData(
   dividerColor: Colors.transparent,
 );
 
-// ✅ Tema oscuro
+// Tema oscuro
 final ThemeData _darkTheme = ThemeData(
   fontFamily: 'SofiaRegular',
   colorScheme: ColorScheme.dark(
