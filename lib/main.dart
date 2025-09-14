@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
 final ThemeData _lightTheme = ThemeData(
   fontFamily: 'SofiaRegular',
   colorScheme: ColorScheme.light(
-    primary: AppColors.primaryLightColor,
+    primary: AppColors.primaryDarkColor,
     secondary: AppColors.accentColor,
     surface: AppColors.bgColor,
   ),

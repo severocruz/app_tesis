@@ -46,9 +46,9 @@ class _MenuPageState extends State<MenuPage> {
         showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(EvaIcons.mic, color:  greyColor),
-              activeIcon: Icon(EvaIcons.mic, size:50.0, color:  Theme.of(context).colorScheme.primary),
-              label: 'Grabar'),
+              icon: Icon(EvaIcons.home, color:  greyColor),
+              activeIcon: Icon(EvaIcons.home, size:50.0, color:  Theme.of(context).colorScheme.primary),
+              label: 'Inicio'),
           BottomNavigationBarItem(
               icon: Icon(EvaIcons.file , color: greyColor),
               activeIcon: Icon(EvaIcons.file, size:50.0, color: Theme.of(context).colorScheme.primary ),
