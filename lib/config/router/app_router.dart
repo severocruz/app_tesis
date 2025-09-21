@@ -1,3 +1,5 @@
+import 'package:app_tesis/models/genero_model.dart';
+import 'package:app_tesis/ui/pages/show_gender_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tesis/ui/pages/menu_page.dart';
 import 'package:app_tesis/ui/pages/home_page.dart';
@@ -20,6 +22,13 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
         path: '/menu',
         builder: (context, state) => const MenuPage()
+      ),
+    GoRoute(
+      path: '/showGender',
+      builder: (context, state) {
+      final genero = state.extra as GeneroModel;
+      return ShowGenderPage(genero: genero);
+        },
       ),
   ]
 );

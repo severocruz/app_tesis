@@ -5,6 +5,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app_tesis/bloc/export_blocs.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -187,12 +188,13 @@ class _HomePageState extends State<HomePage> {
           BlocConsumer<PredictBloc, PredictState>(
             listener: (context,state){
               if(state is PredictSuccessState){
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Predicción: ${state.genero.nombre}')),
-                );
+                  context.push('/showGender', extra: state.genero);
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(content: Text('Predicción: ${state.genero.nombre}')),
+                // );
               } else if(state is PredictFailureState){
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Error: ${state.message}')),
+                  SnackBar(content: Text('Error: ${state.message}'),backgroundColor: Theme.of(context).colorScheme.error,),
                 );
               }
             }, 

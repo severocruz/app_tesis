@@ -3,6 +3,7 @@
 //     final GeneroModel = GeneroModelFromJson(jsonString);
 
 import 'dart:convert';
+// Removed 'dart:ffi' as it is unnecessary for this use case.
 
 class GenerosModel {
   List<GeneroModel> items = [];
@@ -32,6 +33,7 @@ class GeneroModel {
     String? videoLink;
     DateTime? createdAt;
     DateTime? updatedAt;
+    double? porcentaje;
     GeneroModel({
          this.id,
          this.nombre,
@@ -40,7 +42,8 @@ class GeneroModel {
          this.imagen,
          this.videoLink,
          this.createdAt,
-         this.updatedAt
+         this.updatedAt,
+         this.porcentaje
     });
 
     factory GeneroModel.fromJson(Map<String, dynamic> json) => GeneroModel(    
@@ -52,6 +55,7 @@ class GeneroModel {
          videoLink: json["video_link"]??'',
          createdAt: DateTime.parse(json["created_at"]??'2000-01-01'),
          updatedAt: DateTime.parse(json["updated_at"]??'2000-01-01'),
+          porcentaje: json["porcentaje"] != null ? (json["porcentaje"] as num).toDouble() : 0.0
     );
 
     Map<String, dynamic> toJson() => {
@@ -63,5 +67,6 @@ class GeneroModel {
          "video_link": videoLink,
          "created_at": createdAt?.toIso8601String(),
          "updated_at": updatedAt?.toIso8601String(),
+         "porcentaje": porcentaje,
     };
 }
