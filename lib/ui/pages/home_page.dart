@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app_tesis/provider/color_notifire.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     return "$minutes:$seconds";
   }
   String _duracionText = "00:00";
+  File _file = File('');
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -65,7 +68,17 @@ class _HomePageState extends State<HomePage> {
           // ),
           const SizedBox(height: 20),
           BlocConsumer<RecorderBloc, RecorderState>(
-            listener: (context,state){}, 
+            listener: (context,state){
+              if(state is RecorderStoppedState){
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(content: Text('Grabación guardada en: ${state.path}')),
+                // );
+                setState(() {
+                  _file = File(state.path);
+                  
+                });
+              }
+            }, 
             builder: (context, state) {
               final bloc = context.read<RecorderBloc>();
               String durationText = "00:00";
@@ -169,6 +182,42 @@ class _HomePageState extends State<HomePage> {
             ),
         ],
       );
+            }  
+          ),
+          BlocConsumer<PredictBloc, PredictState>(
+            listener: (context,state){
+              if(state is PredictSuccessState){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Predicción: ${state.genero.nombre}')),
+                );
+              } else if(state is PredictFailureState){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Error: ${state.message}')),
+                );
+              }
+            }, 
+            builder: (context, state) {
+              final bloc = context.read<PredictBloc>();
+               return ElevatedButton.icon(
+                onPressed: (state is PredictLoadingState || _file.path.isEmpty)
+                    ? null
+                    : () => bloc.add(PredictingEvent(_file)),
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(color: Theme.of(context).colorScheme.primary  , width: 2), // contorno
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30), // bordes redondeados
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                ),
+                icon: const Icon(Icons.analytics, color: Colors.purple, size: 32),
+                label: state is PredictLoadingState
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Text("Predecir Género"),
+              );
             }  
           ),
         ],

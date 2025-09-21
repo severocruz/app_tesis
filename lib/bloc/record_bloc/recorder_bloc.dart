@@ -36,7 +36,7 @@ class RecorderBloc extends Bloc<RecorderEvent, RecorderState> {
 
       const config = RecordConfig(
         encoder: AudioEncoder.wav, // WAV
-        sampleRate: 44100,         // 44.1 kHz
+        sampleRate: 44100,         // 44.1 kHz 48kHz
         numChannels: 1,            // Mono
       );
 
@@ -119,7 +119,7 @@ class RecorderBloc extends Bloc<RecorderEvent, RecorderState> {
       StopPlayingEvent event, Emitter<RecorderState> emit) async {
     await _audioPlayer.stop();
     emit(RecorderStoppedState( _filePath!));
-    // emit(StoppedPlayingState());
+    //emit(StoppedPlayingState());
   }
 
   void _onTick(TickEvent event, Emitter<RecorderState> emit) {

@@ -1,4 +1,5 @@
 
+import 'package:app_tesis/repository/genero_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:tomatebnb/bloc/accommodation_type_bloc/accommodation_type_bloc.dart';
 import 'package:app_tesis/bloc/export_blocs.dart';
@@ -11,18 +12,21 @@ class Blocs {
   // Declaramos el bloc
    static final DescribeBloc describeBloc = DescribeBloc();
    static final RecorderBloc recorderBloc = RecorderBloc();
+   static final PredictBloc predictBloc = PredictBloc(GeneroRepository());
 
   // Lista de blocs Providers para proveer a toda la aplicación
   static final List<SingleChildWidget>blocsProviders = [
 
     BlocProvider<DescribeBloc>(create: (context) => describeBloc),
     BlocProvider<RecorderBloc>(create: (context) => recorderBloc),
+    BlocProvider<PredictBloc>(create: (context) => predictBloc),
   ];
 
   // Metodos para cerrar el bloc cuando no se necesite
   static void dispose() {
     describeBloc.close();
     recorderBloc.close();
+    predictBloc.close();
   }
 
 
