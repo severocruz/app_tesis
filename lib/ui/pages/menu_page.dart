@@ -28,7 +28,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationProvider>(context);
-    var colortheme = Theme.of(context).colorScheme;
+    // var colortheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: _pageOption[navigationProvider.selectedIndex],

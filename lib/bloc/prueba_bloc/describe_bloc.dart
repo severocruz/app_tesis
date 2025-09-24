@@ -16,9 +16,7 @@ class DescribeBloc extends Bloc<DescribeEvent, DescribeState> {
       if(response){
         //await DescribeRepository.setUserData(response.data!);
         emit(DescribeGetSuccess(response));
-      } else {
-        emit(DescribeGetError('false error'));
-      }
+      } 
     } catch(e){
       emit(DescribeGetError(e.toString()));
     }
