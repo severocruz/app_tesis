@@ -1,4 +1,6 @@
 import 'package:app_tesis/models/genero_model.dart';
+import 'package:app_tesis/ui/pages/caracteristicas_page.dart';
+import 'package:app_tesis/ui/pages/instrumentos_page.dart';
 import 'package:app_tesis/ui/pages/show_gender_page.dart';
 
 import 'package:app_tesis/ui/pages/menu_page.dart';
@@ -30,5 +32,19 @@ final GoRouter appRouter = GoRouter(
       return ShowGenderPage(genero: genero);
         },
       ),
+    GoRoute(
+      path: '/caracteristics',
+      builder: (context, state) {
+      final genero = state.extra as GeneroModel;
+      return CaracteristicasPage(genero: genero);
+        },
+      ), 
+          GoRoute(
+      path: '/instruments',
+      builder: (context, state) {
+      final genero = state.extra as GeneroModel;
+      return InstrumentosPage(genero: genero);
+        },
+      ),   
   ]
 );

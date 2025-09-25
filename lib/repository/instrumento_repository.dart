@@ -23,8 +23,8 @@ class InstrumentoRepository {
         final data = json.decode(response.body); 
         return api_response_list.ApiResponse<InstrumentoModel>(
           status: true,
-          message: data['nombre'],
-          data: InstrumentosModel.fromJsonList(data['data']).items,
+          message: 'Instrumentos obtenidos con éxito',
+          data: InstrumentosModel.fromJsonList(data).items,
         ); 
       } else {
         // final data = json.decode(response.body); 

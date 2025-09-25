@@ -1,11 +1,11 @@
 import 'package:app_tesis/config/constants/environment.dart';
 import 'package:app_tesis/models/genero_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 class ShowGenderPage extends StatefulWidget {
   final GeneroModel genero;
   const ShowGenderPage({super.key, required this.genero});
-
   @override
   State<ShowGenderPage> createState() => _ShowGenderPageState();
 }
@@ -16,7 +16,7 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.genero.porcentaje?.toStringAsFixed(1) }%  de ser ${widget.genero.nombre} '),
+        title: Text('${widget.genero.porcentaje?.toStringAsFixed(1) }%  es ${widget.genero.nombre} '),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -49,22 +49,7 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Video Relacionado:',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 8),
-                        GestureDetector(
-                          onTap: () {
-                            // Aquí podrías abrir el enlace en un navegador o reproductor de video
-                            // launchUrl(Uri.parse(widget.genero.videoLink!));
-                            abrirLink(widget.genero.videoLink!);
-                          },
-                          child: Text(
-                            widget.genero.videoLink!,
-                            style: const TextStyle(fontSize: 16, color: Colors.blue, decoration: TextDecoration.underline),
-                          ),
-                        ),
+                       
                         const SizedBox(height: 16),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -74,7 +59,7 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
                             children: [
                              ElevatedButton.icon(
                                   onPressed: (){
-                                    
+                                    context.push('/caracteristics', extra: widget.genero);
                                   },
                                   style: OutlinedButton.styleFrom(
                                     side: BorderSide(color: Theme.of(context).colorScheme.primary  , width: 2), // contorno
@@ -90,7 +75,7 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
                               const SizedBox(height: 12,width: double.infinity,),
                                ElevatedButton.icon(
                                   onPressed: (){
-
+                                    
                                   },
                                   style: OutlinedButton.styleFrom(
                                     side: BorderSide(color: Theme.of(context).colorScheme.primary  , width: 2), // contorno
@@ -108,6 +93,22 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
                           ),
                         ),
                         const SizedBox(height: 20),
+                         const Text(
+                          'Video Relacionado:',
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8),
+                        GestureDetector(
+                          onTap: () {
+                            // Aquí podrías abrir el enlace en un navegador o reproductor de video
+                            // launchUrl(Uri.parse(widget.genero.videoLink!));
+                            abrirLink(widget.genero.videoLink!);
+                          },
+                          child: Text(
+                            widget.genero.videoLink!,
+                            style: const TextStyle(fontSize: 16, color: Colors.blue, decoration: TextDecoration.underline),
+                          ),
+                        ),
                       ],
                     ),
 

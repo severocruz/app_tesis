@@ -25,8 +25,8 @@ class CaracteristicaRepository {
         final data = json.decode(response.body); 
         return api_response_list.ApiResponse<CaracteristicaModel>(
           status: true,
-          message: data['nombre'],
-          data: CaracteristicasModel.fromJsonList(data['data']).items,
+          message: "datos obtenidos correctamente",
+          data: CaracteristicasModel.fromJsonList(data).items,
         ); 
       } else {
         // final data = json.decode(response.body); 
