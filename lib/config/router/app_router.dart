@@ -5,6 +5,7 @@ import 'package:app_tesis/ui/pages/show_gender_page.dart';
 
 import 'package:app_tesis/ui/pages/menu_page.dart';
 import 'package:app_tesis/ui/pages/home_page.dart';
+import 'package:app_tesis/ui/pages/ubicaciones_page.dart';
 import 'package:go_router/go_router.dart';
 // import 'package:tomatebnb/models/reserve/reserve_response_model.dart';
 // import 'package:tomatebnb/ui/pages/accommodation/accommodation_detail_page.dart';
@@ -39,12 +40,19 @@ final GoRouter appRouter = GoRouter(
       return CaracteristicasPage(genero: genero);
         },
       ), 
-          GoRoute(
+    GoRoute(
       path: '/instruments',
       builder: (context, state) {
       final genero = state.extra as GeneroModel;
       return InstrumentosPage(genero: genero);
         },
-      ),   
+      ), 
+    GoRoute(
+      path: '/ubications',
+      builder: (context, state) {
+      final genero = state.extra as GeneroModel;
+      return UbicacionesPage(genero: genero);
+        },
+      ),  
   ]
 );

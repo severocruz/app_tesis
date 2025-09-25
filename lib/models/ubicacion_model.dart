@@ -26,8 +26,8 @@ String ubicacionModelToJson(UbicacionModel data) => json.encode(data.toJson());
 class UbicacionModel {
     String? nombre;
     String? descripcion;
-    int? latitud;
-    int? longitud;
+    double? latitud;
+    double? longitud;
     String? imagen;
     int? idGenero;
     DateTime? createdAt;
@@ -49,8 +49,8 @@ class UbicacionModel {
     factory UbicacionModel.fromJson(Map<String, dynamic> json) => UbicacionModel(
         nombre: json["nombre"],
         descripcion: json["descripcion"],
-        latitud: json["latitud"],
-        longitud: json["longitud"],
+        latitud: double.parse((json["latitud"]??0).toString()),
+        longitud:double.parse((json["longitud"]??0).toString()) ,
         imagen: json["imagen"],
         idGenero: json["id_genero"],
         createdAt: DateTime.parse(json["created_at"]??'2000-01-01'),

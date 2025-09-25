@@ -75,7 +75,7 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
                               const SizedBox(height: 12,width: double.infinity,),
                                ElevatedButton.icon(
                                   onPressed: (){
-                                    
+                                    context.push('/ubications', extra: widget.genero);
                                   },
                                   style: OutlinedButton.styleFrom(
                                     side: BorderSide(color: Theme.of(context).colorScheme.primary  , width: 2), // contorno

@@ -23,8 +23,8 @@ class UbicacionRepository {
         final data = json.decode(response.body); 
         return api_response_list.ApiResponse<UbicacionModel>(
           status: true,
-          message: data['nombre'],
-          data: UbicacionesModel.fromJsonList(data['data']).items,
+          message: 'Ubicaciones obtenidas',
+          data: UbicacionesModel.fromJsonList(data).items,
         ); 
       } else {
         // final data = json.decode(response.body); 

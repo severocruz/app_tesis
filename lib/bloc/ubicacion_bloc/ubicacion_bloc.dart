@@ -15,7 +15,7 @@ class UbicacionBloc extends Bloc<UbicacionEvent, UbicacionState> {
     emit(UbicacionLoadingState());
     try{
       final response = await ubicacionRepository.getByGenero(event.generoId);
-      if(response.status){
+      if(response.status && response.data != null){
         //await DescribeRepository.setUserData(response.data!);
         emit(GetUbicacionesByGeneroSuccessState(response.data!));
       } else {
