@@ -23,3 +23,11 @@ export 'package:app_tesis/bloc/intrumento_bloc/instrumento_state.dart';
 export 'package:app_tesis/bloc/ubicacion_bloc/ubicacion_bloc.dart';
 export 'package:app_tesis/bloc/ubicacion_bloc/ubicacion_event.dart';
 export 'package:app_tesis/bloc/ubicacion_bloc/ubicacion_state.dart';
+
+export 'package:app_tesis/bloc/grabacion_bloc/grabacion_bloc.dart';
+export 'package:app_tesis/bloc/grabacion_bloc/grabacion_event.dart';
+export 'package:app_tesis/bloc/grabacion_bloc/grabacion_state.dart';
+
+export 'package:app_tesis/bloc/genero_bloc/genero_bloc.dart';
+export 'package:app_tesis/bloc/genero_bloc/genero_event.dart';
+export 'package:app_tesis/bloc/genero_bloc/genero_state.dart';  

@@ -16,7 +16,10 @@ class _ShowGenderPageState extends State<ShowGenderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.genero.porcentaje?.toStringAsFixed(1) }%  es ${widget.genero.nombre} '),
+        title: 
+        widget.genero.porcentaje!=0.0
+        ?Text('${widget.genero.porcentaje?.toStringAsFixed(1)}%  ${widget.genero.nombre} ')
+        :Text(widget.genero.nombre??""),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

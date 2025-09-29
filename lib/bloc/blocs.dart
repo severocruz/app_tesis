@@ -1,4 +1,5 @@
 
+// import 'package:app_tesis/bloc/grabacion_bloc/grabacion_bloc.dart';
 import 'package:app_tesis/repository/caracteristica_repository.dart';
 import 'package:app_tesis/repository/genero_repository.dart';
 import 'package:app_tesis/repository/instrumento_repository.dart';
@@ -19,6 +20,8 @@ class Blocs {
    static final CaracteristicaBloc caracteristicaBloc = CaracteristicaBloc(CaracteristicaRepository());
    static final InstrumentoBloc instrumentoBloc = InstrumentoBloc(InstrumentoRepository());
    static final UbicacionBloc ubicacionBloc = UbicacionBloc(UbicacionRepository());
+   static final GrabacionBloc grabacionBloc = GrabacionBloc();
+   static final GeneroBloc generoBloc = GeneroBloc(GeneroRepository());
 
   // Lista de blocs Providers para proveer a toda la aplicación
   static final List<SingleChildWidget>blocsProviders = [
@@ -29,6 +32,8 @@ class Blocs {
     BlocProvider<CaracteristicaBloc>(create: (context) => caracteristicaBloc),
     BlocProvider<InstrumentoBloc>(create: (context) => instrumentoBloc),
     BlocProvider<UbicacionBloc>(create: (context) => ubicacionBloc),
+    BlocProvider<GrabacionBloc>(create: (context) => grabacionBloc),
+    BlocProvider<GeneroBloc>(create: (context) => generoBloc),
   ];
 
   // Metodos para cerrar el bloc cuando no se necesite
@@ -39,6 +44,8 @@ class Blocs {
     caracteristicaBloc.close();
     instrumentoBloc.close();
     ubicacionBloc.close();
+    grabacionBloc.close();
+    generoBloc.close();
   }
 
 

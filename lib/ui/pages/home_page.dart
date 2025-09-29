@@ -189,6 +189,15 @@ class _HomePageState extends State<HomePage> {
             listener: (context,state){
               if(state is PredictSuccessState){
                   context.push('/showGender', extra: state.genero);
+                  final path = _file.path;
+                  if(path != null && path.isNotEmpty){
+                      context.read<GrabacionBloc>().add(
+                      AddGrabacionEvent(
+                        nombre: state.genero.nombre ?? "Desconocido",
+                        path: path,
+                      ),
+                    );
+                  }
                 // ScaffoldMessenger.of(context).showSnackBar(
                 //   SnackBar(content: Text('Predicción: ${state.genero.nombre}')),
                 // );

@@ -60,4 +60,38 @@ Future<ApiResponse<GeneroModel>> predecirGenero(File file) async {
   }
 }
 
+// Nuevo método para obtener el género por nombre
+  Future<ApiResponse<GeneroModel>> generoByNombre(String nombre) async {
+  try{
+    final  response = await http.get( 
+      Uri.parse('$_baseUrl/genero/$nombre'),
+       headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Accept' : 'application/json'
+        });
+    
+  
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body); 
+      return ApiResponse<GeneroModel>(
+        status: true,
+        message: data['nombre'],
+        data: GeneroModel.fromJson(data),
+      ); 
+    } else {
+      final data = json.decode(response.body); 
+      return ApiResponse<GeneroModel>(
+        status: false,
+        message: data['detail'].toString()
+        
+      ); 
+    }
+  } catch (e) {
+    return ApiResponse<GeneroModel>(
+      status: false, 
+      message: e.toString()
+    );
+  }
+}
+
 }
